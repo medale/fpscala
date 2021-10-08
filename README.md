@@ -6,3 +6,5 @@ Bjarnason. Manning, 2014.
 
 This is in addition to their solutions and includes some Scala
 explorations. 
+
+# Udemy: Functional Programming with Scala Cats by Leandro Galvan

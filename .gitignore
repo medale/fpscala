@@ -17,3 +17,10 @@ project/plugins/project/
 .scala_dependencies
 .worksheet
 .idea/*
+
+.vscode
+.metals
+.bsp
+.bloop
+project/metals.sbt
+

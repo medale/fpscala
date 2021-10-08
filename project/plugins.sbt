@@ -24,3 +24,6 @@ addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.3.4")
 // dependencyUpdatesFilter -= moduleFilter(organization = "org.scala-lang")
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.1")
 
+addCompilerPlugin("org.typelevel" %% "kind-projector" % "0.13.2" cross CrossVersion.full)
+
+addSbtPlugin("ch.epfl.scala" % "sbt-bloop" % "1.4.9")

@@ -1,8 +1,8 @@
 package chap3
 
-import org.scalatest.{FunSpec, Matchers}
+import common.UnitTest
 
-class OptionTest extends FunSpec with Matchers {
+class OptionTest extends UnitTest {
 
   describe("Functions that use Options") {
     it("should return Some or None") {

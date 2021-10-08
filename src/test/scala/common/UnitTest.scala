@@ -1,8 +1,8 @@
 package common
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers
 
-
-abstract class UnitTest extends FlatSpec with Matchers {
+abstract class UnitTest extends AnyFunSpec with Matchers {
 
 }
