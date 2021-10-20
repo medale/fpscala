@@ -9,12 +9,14 @@ object Account {
 
     implicit val universalEq: Eq[Account] = Eq.fromUniversalEquals[Account]
     implicit def orderById(implicit orderLong: Order[Long]): Order[Account] = Order.from((a1, a2) => orderLong.compare(a1.id, a2.id))
-    
+    implicit def toStringShow: Show[Account] = Show.fromToString
+
     object Instances {
         implicit def eqById(implicit eqLong: Eq[Long]): Eq[Account] = Eq.by(_.id)
         implicit def eqByNumber(implicit eqStr: Eq[String]): Eq[Account] = Eq.by(_.number)
         implicit def orderByBalance(implicit orderInt: Order[Int]): Order[Account] = Order.by(a => a.balance)
         implicit def orderByBalanceDesc(implicit orderInt: Order[Int]): Order[Account] = Order.reverse(orderByBalance)
+        implicit def ownerShow: Show[Account] = Show.show(a => s"Account for ${a.owner}")
     }
 
     def sort[A](list: List[A])(implicit order: Order[A]): List[A] = {
@@ -46,10 +48,15 @@ object Bar {
     def main(args: Array[String]): Unit = {
       implicit val toUse = Account.Instances.eqByNumber
       val a1 = Account(1, "122", 100, "me")
-      val a2 = Account(1, "123", 100, "me")
-      val a3 = Account(2, "123", 100, "me")
+      val a2 = Account(1, "123", 100, "John Doe")
+      val a3 = Account(2, "123", 100, "Jane Doe")
 
       println(a1 === a2)
       println(a2 === a3)
+
+      println(Account.Instances.ownerShow.show(a3))
+
+      //use Account implicit toStringShow
+      println(a2.show)
     }
 }
